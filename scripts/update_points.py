@@ -43,10 +43,9 @@ def update_users():
         return 'Free Item Not Found! Make sure there exists only one Item of Type = "{0}" having points = {1}'.format(
             ubiconf.FREE_ITEM_TYPE, ubiconf.FREE_ITEM_POINTS_VALUE
         )
-    else:
-        return 'Something went wrong! Make sure there exists only one Item of Type = "{0}" having points = {1}'.format(
-            ubiconf.FREE_ITEM_TYPE, ubiconf.FREE_ITEM_POINTS_VALUE
-        )
+    except Exception as err:
+        return 'Something went wrong! Error = {0}'.format(err)
+
     eligible_users = User.objects.filter(
         free_points__lt=ubiconf.MAX_FREE_POINTS_ALLOWED,
         free_points_eligible_dtm__lte=now())
