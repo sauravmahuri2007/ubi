@@ -5,7 +5,7 @@ from utils.auth import GetJWT
 
 urlpatterns = [
     url('^$', Ping.as_view(), name='home'),
-    url('^ping$', Ping.as_view(), name='ping'),
+    url('^ping/?$', Ping.as_view(), name='ping'),
     url('^auth/?$', GetJWT.as_view(), name='auth'),
     url('^connect/(?P<userid>[0-9]+)/?$', Connect.as_view(), name='connect'),
     url('^getPoints/(?P<userid>[0-9]+)/?$', GetPoints.as_view(), name='get_points'),

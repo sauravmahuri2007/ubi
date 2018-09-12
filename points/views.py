@@ -9,7 +9,7 @@ from utils.auth import BasicAuthMixin, JWTAuthMixin, get_token
 
 class Ping(View):
 
-    def get(self):
+    def get(self, request):
         return JsonResponse('Pong!', status=200, safe=False)
 
 

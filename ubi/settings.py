@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ubidb',
         'USER': 'root',
-        'PASSWORD': 'personify',
+        'PASSWORD': 'root',
         'HOST': '',
         'PORT': ''
     }
