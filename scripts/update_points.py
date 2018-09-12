@@ -19,7 +19,7 @@ from config import ubiconf
 from points.models import User, Transaction, Item
 from utils.ubiutils import next_eligible_datetime
 
-from django.db import connections, transaction
+from django.db import connections, transaction, models
 from django.utils.timezone import now
 
 connections.close_all()
@@ -37,7 +37,16 @@ def update_free_points(users, item):
 
 
 def update_users():
-    free_item = Item.objects.get(type=ubiconf.FREE_ITEM_TYPE, points=ubiconf.FREE_ITEM_POINTS_VALUE)
+    try:
+        free_item = Item.objects.get(type=ubiconf.FREE_ITEM_TYPE, points=ubiconf.FREE_ITEM_POINTS_VALUE)
+    except models.ObjectDoesNotExist:
+        return 'Free Item Not Found! Make sure there exists only one Item of Type = "{0}" having points = {1}'.format(
+            ubiconf.FREE_ITEM_TYPE, ubiconf.FREE_ITEM_POINTS_VALUE
+        )
+    else:
+        return 'Something went wrong! Make sure there exists only one Item of Type = "{0}" having points = {1}'.format(
+            ubiconf.FREE_ITEM_TYPE, ubiconf.FREE_ITEM_POINTS_VALUE
+        )
     eligible_users = User.objects.filter(
         free_points__lt=ubiconf.MAX_FREE_POINTS_ALLOWED,
         free_points_eligible_dtm__lte=now())
