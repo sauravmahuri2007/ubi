@@ -1,3 +1,4 @@
+# A list of item types which can be purchased
 CANBEPURCHASED = [
     'PURCHASE_POINTS',
     'PURCHASE_ITEMS'
@@ -10,11 +11,11 @@ EXCEPTION_STR = {
     'CANTPURCHASE': 'Selected Item Can Not Be Purchased'
 }
 
-ENABLE_FREE_POINT_SYSTEM = True
-FREE_POINTS_ELIGIBILITY = 60  # 3 hours in minutes
-MAX_FREE_POINTS_ALLOWED = 200
-FREE_ITEM_TYPE = 'FREE_POINTS'
-FREE_ITEM_POINTS_VALUE = 50
+ENABLE_FREE_POINT_SYSTEM = True  # Global setting to turn ON/OFF the free point system
+FREE_POINTS_ELIGIBILITY = 3 * 60  # 3 hours in minutes
+MAX_FREE_POINTS_ALLOWED = 200  # The maximum points limit can be given as free
+FREE_ITEM_TYPE = 'FREE_POINTS'  # Make sure to create one and only one item of this type which can be given as free
+FREE_ITEM_POINTS_VALUE = 50  # The points which will be given for free for one transaction when eligible
 
 UBI_BASIC_AUTH = {
     'username': 'UBI_BASIC_USER',
