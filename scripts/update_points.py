@@ -1,6 +1,7 @@
 """
 A python script which is responsible for updating the user's free points.
-This can also be schedule to run as a cron job
+This can also be schedule to run as a cron job.
+But it is better to use scripts/start_job.sh and scripts/stop_job.sh to start and stop the script.
 """
 
 import multiprocessing

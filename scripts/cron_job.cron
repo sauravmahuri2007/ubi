@@ -1,5 +1,0 @@
-# run script every 5 minutes
-*/5 * * * *   sauravkumar.r  /home/sauravkumar.r/SampleProjects/ubi/ubivenv/bin/python /home/sauravkumar.r/SampleProjects/ubisoft/ubi/scripts/update_points.py
-
-# run script after system (re)boot
-@reboot       sauravkumar.r  /home/sauravkumar.r/SampleProjects/ubi/ubivenv/bin/python /home/sauravkumar.r/SampleProjects/ubisoft/ubi/scripts/update_points.py
