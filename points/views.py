@@ -57,6 +57,27 @@ class GetPoints(JWTAuthMixin, View):
             'purchased_points': uobj.user.purchased_points}, status=200, safe=False)
 
 
+class UpdatePoints(JWTAuthMixin, View):
+    """
+    Checks whether User is eligible for free points, if so update the User's free points with total number of
+    free points User is eligible based on the time units per free points passed.
+    For example:
+    If User is eligible for 50 points per 3 hours and this API was invoked after 10 Hours then User will be rewarded
+    with 150 points and same will be tracked in transaction table with one transaction.
+    """
+
+    def get(self, request, *args, **kwargs):
+        userid = kwargs.get('userid')
+        try:
+            uobj = UserProfile(userid=userid)
+        except ObjectDoesNotExist:
+            return JsonResponse({'status': 404, 'error': 'DoesNotExist'}, status=404, safe=False)
+        return JsonResponse({
+            'userid': userid,
+            'free_points': uobj.user.free_points,
+            'purchased_points': uobj.user.purchased_points}, status=200, safe=False)
+
+
 class GetItems(JWTAuthMixin, View):
     """
     Returns the list of transaction which is having items being purchased by the User.

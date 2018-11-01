@@ -33,6 +33,7 @@ class Item(models.Model):
 class Transaction(models.Model):
     transactionid = models.AutoField(db_column='transactionid', primary_key=True)
     userid = models.ForeignKey(User, db_column='userid', on_delete=models.CASCADE)
+    quantity = models.IntegerField(db_column='quantity', default=1)
     created_dtm = models.DateTimeField(db_column='created_dtm', auto_now_add=True)
     status = models.CharField(db_column='status', max_length=30, null=False)
     free_points_used = models.IntegerField(db_column='free_points_used', default=0)
